@@ -1,0 +1,12 @@
+# Ignore everything by default
+*
+
+# Keep gitignore
+!.gitignore
+
+# Keep README if needed
+!README.md
+
+# Keep versions only
+!_versions/
+!_versions/**

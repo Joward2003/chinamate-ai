@@ -1,0 +1,149 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --ink: #14211b;
+  --paper: #f7f8f3;
+  --moss: #176b4d;
+  --coral: #f36b4f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family:
+    "Avenir Next", Avenir, "Segoe UI", Helvetica, Arial, sans-serif;
+  text-rendering: optimizeLegibility;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+button {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+::selection {
+  background: #cfe7da;
+  color: var(--ink);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  border: 3px solid transparent;
+  border-radius: 999px;
+  background: rgba(20, 33, 27, 0.22);
+  background-clip: padding-box;
+}
+
+.font-display {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 500;
+  letter-spacing: -0.045em;
+}
+
+.page-shell {
+  margin: 0 auto;
+  width: min(100%, 1440px);
+  padding: 0 32px;
+}
+
+.paper-grid {
+  background-image:
+    linear-gradient(rgba(20, 33, 27, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(20, 33, 27, 0.035) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+.soft-noise {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.035'/%3E%3C/svg%3E");
+}
+
+.map-canvas {
+  background-color: #e8eee9;
+  background-image:
+    linear-gradient(34deg, transparent 48%, rgba(23, 107, 77, 0.08) 49%, rgba(23, 107, 77, 0.08) 52%, transparent 53%),
+    linear-gradient(126deg, transparent 42%, rgba(23, 107, 77, 0.08) 43%, rgba(23, 107, 77, 0.08) 46%, transparent 47%),
+    radial-gradient(circle at 22% 18%, #d7e6d8 0 7%, transparent 7.5%),
+    radial-gradient(circle at 76% 68%, #d6e5d7 0 12%, transparent 12.5%);
+}
+
+.route-line {
+  stroke-dasharray: 7 8;
+}
+
+.hide-scrollbar {
+  scrollbar-width: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.fade-up {
+  animation: fade-up 420ms ease-out both;
+}
+
+.slide-in {
+  animation: slide-in 300ms ease-out both;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-shell {
+    padding: 0 18px;
+  }
+}
