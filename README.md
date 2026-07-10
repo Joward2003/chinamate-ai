@@ -1,45 +1,79 @@
-# ChinaMate AI MVP
+# ChinaMate AI
 
-High-fidelity, mobile-first inbound travel prototype built with Next.js, React,
-TypeScript, Tailwind CSS, shadcn-style components and Lucide icons.
+ChinaMate is a local-help prototype for foreign travelers in China. It focuses
+on actionable help cards, Chinese phrase cards, saved travel help, and a local
+travel preference profile.
 
-## Run locally
+## Current Features
+
+- Unified `/help` flow for:
+  - `I need to do something`
+  - `Something went wrong`
+  - AI Chinese phrase generation
+- Scenario-specific LLM prompts for task completion and problem recovery.
+- AI-generated related help cards.
+- Requery/clarification guard for overly vague user prompts.
+- Chinese show cards with copy and browser speech playback.
+- Admin-only Profile preference center stored in localStorage.
+- Profile-aware AI request payloads when personalization is enabled.
+- Shanghai starter guide cards that prefill the AI help flow.
+
+## Demo User
+
+The project currently supports one local demo user only:
+
+```text
+userId: admin
+displayName: Admin
+role: admin
+```
+
+There is no registration, login, password recovery, multi-user permission
+system, or backend admin panel.
+
+## Run Locally
 
 ```bash
 npm install
 npm run dev
 ```
 
-Open <http://localhost:3000>.
+Open <http://localhost:3000>. If that port is already used, Next.js may choose a
+different port.
+
+## Environment Variables
+
+Copy `.env.local.example` to `.env.local` and add your server-only key:
+
+```bash
+cp .env.local.example .env.local
+```
+
+Required for LLM features:
+
+```text
+DEEPSEEK_API_KEY=...
+```
+
+Never prefix the key with `NEXT_PUBLIC_`. Do not commit `.env.local`.
 
 ## Validation
 
 ```bash
 npm run typecheck
 npm run build
-node scripts/visual-check.mjs
 ```
 
-The visual check uses the local Google Chrome installation and writes desktop
-and mobile screenshots to `qa/`.
+Optional model connectivity check:
 
-## Included flows
+```bash
+npm run test:models
+```
 
-- Splash and inspiration feed
-- Place detail and bilingual phrase cards
-- Manual/GPS-assisted entry status
-- Low-input travel profile
-- Pre-arrival checklist
-- Executable two-day Beijing itinerary
-- Foreigner-friendly map filters and traveler contributions
-- Task-oriented dynamic trip adjustment
-- Local service marketplace
-- Feedback and shareable travel recap
+## Deployment
 
-All data and external actions are mocked. The app does not process payments.
+This app can be deployed on Vercel as a Next.js project. Configure
+`DEEPSEEK_API_KEY` and related optional model variables in Vercel Project
+Settings, not in Git.
 
-## Photo credits
-
-Prototype travel imagery is stored locally under `public/images/` and sourced
-from free-to-use Unsplash photographs by Hanson Lu, Ray W, Sergio Kian,
-Ekaterina Zlotnikova, Sacha Canivet, Vincent Guth and Luc L.
+The local `.vercel/` folder is intentionally ignored.
